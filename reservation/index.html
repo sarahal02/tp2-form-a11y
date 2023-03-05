@@ -27,9 +27,9 @@
                 <div class="form-section">
                     <h2>1. Vérifier la disponibilité</h2>
                     <label for="date-arrivee">Date d'arrivée :</label>
-                    <input type="date" id="date-arrivee" name="date-arrivee">
+                    <input type="date" id="date-arrivee" name="date-arrivee" required>
                     <label for="date-depart">Date de départ :</label>
-                    <input type="date" id="date-depart" name="date-depart">
+                    <input type="date" id="date-depart" name="date-depart" required>
                     <button type="button" id="check-availability-button">Vérifier la disponibilité</button>
                     <p id="availability-message"></p>
                 </div>
@@ -39,9 +39,9 @@
                 <div class="form-section">
                     <h2>2. Nombre de personnes </h2>
                     <label  for="adultes">Adultes (maximum 4):</label>
-                    <input type="number" id="adultes" name="adultes">
+                    <input type="number" id="adultes" name="adultes" required maxlength="4">
                     <label for="enfants">Enfants (maximum 5):</label>
-                    <input type="number" id="enfants" name="enfants">
+                    <input type="number" id="enfants" name="enfants" required maxlength="5">
                     <p>
                         Notes: <br>
                         1. la chambre familiale peut loger jusqu'à 6 personnes<br>
@@ -55,10 +55,39 @@
                     <h2>3. Choix chambre et forfait </h2>
                     <!-- Trois boutons radio pour le choix du type de chambre simple, double ou familiale
                     Les boutons doivent être des images cliquables: utiliser images/types-de-chambre -->
+                    <ul class="chambres">
+                        <li>
+                            <input type="radio" name="typeDeChambres" id="chambreSimple" value="chambreSimple" class="screen-reader-only" required>
+                            <label for="chambreSimple">
+                                <img src="/images/types-de-chambre/1-lit-double.webp" alt="Une chambre simple">
+                                <span class="typeDeChambres">Chambre simple</span>
+                            </label>
+                        </li>
+                        <li>
+                            <input type="radio" name="typeDeChambres" id="chambreDouble" value="chambreDouble" class="screen-reader-only">
+                            <label for="chambreDouble">
+                                <img src="/images/types-de-chambre/2-lits-double.jpg" alt="Une chambre double">
+                                <span class="typeDeChambres">Chambre double</span>
+                            </label>
+                        </li>
+                        <li>
+                            <input type="radio" name="typeDeChambres" id="chambreFamiliale" value="chambreFamiliale" class="screen-reader-only">
+                            <label for="chambreFamiliale">
+                                <img src="/images/types-de-chambre/chambre-familiale.jpg" alt="">
+                                <span class="typeDeChambres">Chambre familiale</span>
+                            </label>
+                        </li>
+                    </ul>
+
                     <!-- [case à cocher] Inclure le petit déjeuner s'il-vous-plaît -->
-                    <p> Le coût du petit déjeûner des adultes est de 25$ CAN, pour les enfants de moins de 12 ans c'est
-                        12.50$
-                        CAN.</p>
+                    <div class="petitDejeuner">
+                        <input type="checkbox" name="dejeuner" id="dejeuner" value="dejeuner" class="screen-reader-only">
+                        <label for="dejeuner">Inclure le petit déjeuner</label>
+                        
+                        <p> *Le coût du petit déjeûner des adultes est de 25$ CAN et pour les enfants de moins de 12 ans il est de 12.50$ CAN.</p>
+                    </div>
+
+                    
                 </div>
             </fieldset>
 
@@ -66,16 +95,16 @@
                 <div class="form-section">
                     <h2>4. Identification</h2>
                     <label for="prenom">Prénom :</label>
-                    <input type="text" id="prenom" name="prenom">
+                    <input type="text" id="prenom" name="prenom" required minlength="3">
 
                     <label for="nom">Nom :</label>
-                    <input type="text" id="nom" name="nom">
+                    <input type="text" id="nom" name="nom" required minlength="3">
 
                     <label for="email">Email :</label>
-                    <input type="email" id="email" name="email">
+                    <input type="email" id="email" name="email" required>
 
                     <label for="telephone">Téléphone :</label>
-                    <input type="tel" id="telephone" name="telephone">
+                    <input type="tel" id="telephone" name="telephone" required minlength="3" maxlength="7">
                 </div>
             </fieldset>
 
