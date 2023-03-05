@@ -8,6 +8,10 @@
 
     <title>Réservation | Auberge du jacana africain</title>
 
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/css/typo.css">
+    <link rel="stylesheet" href="/css/utilitaires.css">
+
 </head>
 
 <body>
@@ -23,9 +27,11 @@
     <main>
         <h1>Réservation</h1>
         <form id="reservation-form" action="reservation.html">
-            <fieldset legend="">
-                <div class="form-section">
-                    <h2>1. Vérifier la disponibilité</h2>
+            <fieldset class="date ctnValidation">
+                <legend class="h2">
+                        <h2>1. Vérifier la disponibilité</h2>
+                    </legend>
+                <div class=" rangee form-section">
                     <label for="date-arrivee">Date d'arrivée :</label>
                     <input type="date" id="date-arrivee" name="date-arrivee" required>
                     <label for="date-depart">Date de départ :</label>
@@ -35,49 +41,66 @@
                 </div>
             </fieldset>
 
-            <fieldset legend="">
-                <div class="form-section">
+            <fieldset class="ctnValidation">
+                <legend class="h2">
                     <h2>2. Nombre de personnes </h2>
+                </legend>
+                <div class="rangee form-section">    
                     <label  for="adultes">Adultes (maximum 4):</label>
-                    <input type="number" id="adultes" name="adultes" required maxlength="4">
+                    <input type="number" id="adultes" name="adultes" required min="1" max="4">
                     <label for="enfants">Enfants (maximum 5):</label>
-                    <input type="number" id="enfants" name="enfants" required maxlength="5">
+                    <input type="number" id="enfants" name="enfants" required min="0" max="5">
                     <p>
                         Notes: <br>
                         1. la chambre familiale peut loger jusqu'à 6 personnes<br>
                         2. si vous avez besoin de louer plusieurs chambres, <a href="">contactez-nous directement</a>
                     </p>
+
                 </div>
             </fieldset>
 
-            <fieldset legend="">
-                <div class="form-section">
+            <fieldset class="ctnValidation">
+                <legend class="h2">
                     <h2>3. Choix chambre et forfait </h2>
+                </legend>
+                <div class="rangee form-section">    
                     <!-- Trois boutons radio pour le choix du type de chambre simple, double ou familiale
                     Les boutons doivent être des images cliquables: utiliser images/types-de-chambre -->
                     <ul class="chambres">
                         <li>
                             <input type="radio" name="typeDeChambres" id="chambreSimple" value="chambreSimple" class="screen-reader-only" required>
                             <label for="chambreSimple">
-                                <img src="/images/types-de-chambre/1-lit-double.webp" alt="Une chambre simple">
-                                <span class="typeDeChambres">Chambre simple</span>
+                                <picture>
+                                    <img src="/images/types-de-chambre/1-lit-double.webp" alt="Une chambre simple">
+                                    <span class="typeDeChambres">Chambre simple</span>
+                                </picture>
                             </label>
                         </li>
                         <li>
                             <input type="radio" name="typeDeChambres" id="chambreDouble" value="chambreDouble" class="screen-reader-only">
                             <label for="chambreDouble">
-                                <img src="/images/types-de-chambre/2-lits-double.jpg" alt="Une chambre double">
-                                <span class="typeDeChambres">Chambre double</span>
+                                <picture>
+                                    <img src="/images/types-de-chambre/2-lits-double.jpg" alt="Une chambre double">
+                                    <span class="typeDeChambres">Chambre double</span>
+                                </picture>
                             </label>
                         </li>
                         <li>
                             <input type="radio" name="typeDeChambres" id="chambreFamiliale" value="chambreFamiliale" class="screen-reader-only">
                             <label for="chambreFamiliale">
-                                <img src="/images/types-de-chambre/chambre-familiale.jpg" alt="">
-                                <span class="typeDeChambres">Chambre familiale</span>
+                                <picture>
+                                    <img src="/images/types-de-chambre/chambre-familiale.jpg" alt="">
+                                    <span class="typeDeChambres">Chambre familiale</span>
+                                </picture>
                             </label>
                         </li>
                     </ul>
+
+                    <p class="erreur">
+                        <span class="screen-reader-only">Avertissement</span>
+                        <span class="icone icone--avertissement" aria-hidden="true"></span>
+                        Aucune chambre n'a été sélectionnée.
+                    </p>
 
                     <!-- [case à cocher] Inclure le petit déjeuner s'il-vous-plaît -->
                     <div class="petitDejeuner">
@@ -91,21 +114,55 @@
                 </div>
             </fieldset>
 
-            <fieldset legend="">
-                <div class="form-section">
+            <fieldset class="ctnValidation">
+                <legend class="h2">
                     <h2>4. Identification</h2>
-                    <label for="prenom">Prénom :</label>
-                    <input type="text" id="prenom" name="prenom" required minlength="3">
+                </legend>
+                <div class="rangee form-section">                    
+                    <div class="nomComplet ctnValidation">
+                        <p>
+                            <label for="prenom">Prénom :</label>
+                            <input type="text" id="prenom" name="prenom" required minlength="3" pattern="[a-zA-ZÀ-ÿ \-]+">
+                        </p> 
+                        <p>
+                            <label for="nom">Nom :</label>
+                            <input type="text" id="nom" name="nom" required minlength="3" pattern="[a-zA-ZÀ-ÿ \-]+">
+                        </p>
+                        <p class="erreur">
+                            <span class="screen-reader-only">Avertissement</span>
+                            <span class="icone icone--avertissement" aria-hidden="true"></span>
+                            Le prénom ou le nom comporte un ou plusieurs caractères interdits.
+                        </p>
+                    </div>
+                        
+                        
+                    <div class="email ctnValidation">
+                        <p>
+                            <label for="email">Email :</label>
+                            <input type="email" id="email" name="email" required>
+                        </p>
+                        <p class="erreur">
+                            <span class="screen-reader-only">Avertissement</span>
+                            <span class="icone icone--avertissement" aria-hidden="true"></span>
+                                Votre email n'est pas valide.
+                        </p>
+                    </div>
 
-                    <label for="nom">Nom :</label>
-                    <input type="text" id="nom" name="nom" required minlength="3">
-
-                    <label for="email">Email :</label>
-                    <input type="email" id="email" name="email" required>
-
-                    <label for="telephone">Téléphone :</label>
-                    <input type="tel" id="telephone" name="telephone" required minlength="3" maxlength="7">
+                    <div class="tel ctnValidation">
+                        <p>
+                            <label for="telephone">Téléphone :</label>
+                            <input type="tel" id="telephone" name="telephone" required minlength="3" maxlength="10" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">
+                        </p>
+                        <p class="erreur">
+                            <span class="screen-reader-only">Avertissement</span>
+                            <span class="icone icone--avertissement" aria-hidden="true"></span>
+                                Le numéro de téléphone n'est pas valide.
+                        </p>
+                    </div>
                 </div>
+
+                
+
             </fieldset>
 
             <p><button type="submit">Confirmer la réservation</button></p>
