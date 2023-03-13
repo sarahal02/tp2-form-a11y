@@ -29,88 +29,172 @@
 /* Styles de base
    ========================================================================== */
 
+body{
+    background-color:floralwhite;
+}
+
 ul.rangee {
     list-style: none;
-    padding-left: 0;
 }
 
 .typeDeChambres{
     display: block;
 }
 
-.choixChambres{
-    justify-content: center;
-    align-items: center;
+.signature{
+    text-decoration: none;
+    font-size: 3rem;
+    line-height: 1;
+    margin-left: 3em
+}
+
+.signature__span{
+    max-width: 100px;
+}
+
+.signature__logo{
+    width: 10%;
 }
 
 fieldset{
-    padding: 0;
-    border: none;
+    padding: 10px;
+    border-color: #068221;
+    background: white;
 }
 
-/* Mise en forme */
-/*@media (min-width:600px) {
-    ul.rangee li {
-         flex:0 1 calc(33.333333% - 10px); 
-        flex: 0 1 32%;
+form{
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+}
+
+.form-section {
+    margin-bottom: 2rem;
+    margin: 2em;
+}
+
+select {
+    border-radius: 5px;
+    margin: 0.25em;
+}
+
+h1{
+    margin-left: 1em;
+}
+
+
+.disponibiliteDate{
+    display: flex;
+    flex-direction: column;
+}
+
+/* Mise en forme table */
+@media (min-width:600px) {
+    ul.rangee {
+        list-style: none;
+        display: flex;
+        justify-content: space-between;
+    }
+    
+    .typeDeChambres{
+        display: block;
     }
 
-    ul.rangee li:nth-of-type(2) {
-        margin: 0 10px;
+    .nav__list{
+        display: flex;
+        flex-direction: row;
+        list-style: none;
+        display: flex;
+        align-items: center;
+        justify-content: center; 
+    }
+    .nav {
+        margin-top: 2em;
+        background: #ddd;
+        height: 5em;
+    }
+    
+    .disponibiliteDate{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
     }
 
-    .coordonnees {
-        max-width: 50%;
-        
+    .disponibiliteVerifier{
+        justify-content: center;
+        display: flex;
+    }
+
+    footer {
+        padding: 4rem;
+    }
+
+    button {
+        padding: 1.1em;
+    }
+    
+}
+
+@media (max-width:600px){
+    .nav__list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .signature__logo{
+        width: 15%;
+    }
+
+    .signature{
+        margin-left: 20px
     }
 }
-*/
+
+/* NAV PRINCIPALE */
+.nav {
+    margin-top: 2em;
+    background: cadetblue;
+  }
+  .nav__list {
+    list-style: none;
+    align-items: center;
+    height: 100%;
+  }
+  .nav__list-item {
+    padding: 0.4em;
+    position: relative; 
+  }
+  .nav__link:link,
+  .nav__link:visited{
+    text-decoration: none;
+    font-weight: bold;
+    color: white;
+    padding-bottom: 2em;
+  }
+  .nav__link:hover,
+  .nav__link--active {
+    text-decoration: underline;
+    font-weight: bold;
+    color: #000;
+  }
+
 /* Boutons radios accessibles
    ========================================================================== */
 
 /*** Form ***/
 label {
-    /* placer les étiquettes au-dessus des champs de saisie */
+
     display: block;
 }
 
-input[type=text],
-input[type=email],
-input[type=tel] {
-    /* pleine largeur pour la plupart des champs de saisie */
-    display: inline-block;
-    width: 100%;
-}
-
-/*** Label des boutons radio ***/
-/* le sélecteur met à profit
-le fait que le label est consécutif
-au input (cas des boutons radio et des cases à cocher)
- */
- input[type=radio]+label {
-    display: inline-block;
-    text-align: center;
-    border: 2px solid transparent;
-}
-
-/*** Interactivité ***/
-[type=radio]:hover+label {
-    cursor: pointer;
-}
-
-[type=radio]:hover+label,
-[type=radio]:focus+label {
-    border: 2px solid #09c231;
-}
-
-[type=radio]:checked+label {
-    border: 2px solid #068221;
-}
 
 /*** Bouton de soumission ***/
 button {
-    padding: 0.5rem;
     background-color: #d6dfcf;
+    margin: 2em;
+    font-size: 1.2em;
 }
 
 button:hover,
@@ -143,4 +227,20 @@ button:focus {
 
 .icone--erreur {
     background-position: 101px 0;
+}
+
+/***Section Nous Joindre***/
+
+aside{
+    padding: 5em;
+    background-color:aliceblue;
+}
+
+
+/***Footer***/
+
+footer{
+    padding: 2rem 2rem;
+    display: block;
+    
 }
